@@ -10,10 +10,16 @@ services:
     environment: 
       - API_URL=http://backend:8080
       - API_IMAGE_URL=http://api-server:3001
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.<unique-name>.rule=Host(`your-domain.com`)"
+      - "traefik.http.routers.<unique-name>.entrypoints=websecure"
+      - "traefik.http.routers.<unique-name>.tls.certResolver=letsencrypt"
+      - "traefik.http.services.<unique-name>.loadbalancer.server.port=3000"
     extra_hosts:
       - "host.docker.internal:host-gateway"
     networks:
-      - appnetwork
+      - dokploy-network
 
   backend:
     build: 
@@ -29,7 +35,7 @@ services:
     extra_hosts:
       - "host.docker.internal:host-gateway"
     networks:
-      - appnetwork
+      - dokploy-network
 
   postgres:
     image: postgres:16-alpine
@@ -43,7 +49,7 @@ services:
       - postgres_data:/var/lib/postgresql/data
       - ./DbInit/init.sql:/docker-entrypoint-initdb.d/01_init.sql
     networks:
-      - appnetwork
+      - dokploy-network
 
   pict-rs:
     image: asonix/pictrs:0.5
@@ -57,7 +63,7 @@ services:
     ports:
       - "8080:8080"  
     networks:
-      - appnetwork      
+      - dokploy-network       
   
   api-server:
     build: ./API-Images
@@ -69,12 +75,12 @@ services:
     depends_on:
       - pict-rs     
     networks:
-      - appnetwork          
+      - dokploy-network          
 
 volumes:
   postgres_data:
 
 networks:
-  appnetwork:
-    driver: bridge
+  dokploy-network:
+    external: true
   
