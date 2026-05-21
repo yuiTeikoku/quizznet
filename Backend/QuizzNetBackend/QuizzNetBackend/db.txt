@@ -1,0 +1,1 @@
+Scaffold-DbContext “Host=10.65.65.224;Port=5432;Username=test;Password=123123;Database=SocialModule;” Npgsql.EntityFrameworkCore.PostgreSQL -OutputDir 'Dbo\Models' -StartupProject QuizzNetBackend -schema public -force -NoOnConfiguring -Context QuizzContext

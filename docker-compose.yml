@@ -1,0 +1,80 @@
+services:
+  front:
+    build: 
+      context: ./Front
+      dockerfile: Dockerfile
+    ports: 
+      - "3000:3000"
+    depends_on:
+      - backend
+    environment: 
+      - API_URL=http://backend:8080
+      - API_IMAGE_URL=http://api-server:3001
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    networks:
+      - appnetwork
+
+  backend:
+    build: 
+      context: ./Backend/QuizzNetBackend/QuizzNetBackend
+      dockerfile: Dockerfile
+    ports: 
+      - "8000:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development  
+      - ConnectionStrings__PostgresConnectionString=Host=postgres;Port=5432;Username=quizznet;Password=quizznet;Database=quizznet
+    depends_on:
+      - postgres
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    networks:
+      - appnetwork
+
+  postgres:
+    image: postgres:16-alpine
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=quizznet
+      - POSTGRES_PASSWORD=quizznet
+      - POSTGRES_DB=quizznet
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./DbInit/init.sql:/docker-entrypoint-initdb.d/01_init.sql
+    networks:
+      - appnetwork
+
+  pict-rs:
+    image: asonix/pictrs:0.5
+    restart: unless-stopped
+    environment:
+      - PICTRS__SERVER__ADDRESS=0.0.0.0:8080
+      - PICTRS__MEDIA__VIDEO_ENABLED=false   # отключаем видео
+      - PICTRS__MEDIA__ANIMATED_ENABLED=false
+    volumes:
+      - ./pictrs-data:/mnt
+    ports:
+      - "8080:8080"  
+    networks:
+      - appnetwork      
+  
+  api-server:
+    build: ./API-Images
+    restart: unless-stopped
+    ports:
+      - "3001:3001"  
+    environment:
+      - PICTRS_URL=http://pict-rs:8080
+    depends_on:
+      - pict-rs     
+    networks:
+      - appnetwork          
+
+volumes:
+  postgres_data:
+
+networks:
+  appnetwork:
+    driver: bridge
+  
