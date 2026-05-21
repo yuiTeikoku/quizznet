@@ -2744,11 +2744,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Yan\\Work\\quizznet-app\\Backend\\QuizzNetBackend\\QuizzNetBackend\\QuizzNetBackend.csproj",
+      "projectUniqueName": "C:\\Yan\\Work\\quizznet\\Backend\\QuizzNetBackend\\QuizzNetBackend\\QuizzNetBackend.csproj",
       "projectName": "QuizzNetBackend",
-      "projectPath": "C:\\Yan\\Work\\quizznet-app\\Backend\\QuizzNetBackend\\QuizzNetBackend\\QuizzNetBackend.csproj",
+      "projectPath": "C:\\Yan\\Work\\quizznet\\Backend\\QuizzNetBackend\\QuizzNetBackend\\QuizzNetBackend.csproj",
       "packagesPath": "C:\\Users\\msdoo\\.nuget\\packages\\",
-      "outputPath": "C:\\Yan\\Work\\quizznet-app\\Backend\\QuizzNetBackend\\QuizzNetBackend\\obj\\",
+      "outputPath": "C:\\Yan\\Work\\quizznet\\Backend\\QuizzNetBackend\\QuizzNetBackend\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

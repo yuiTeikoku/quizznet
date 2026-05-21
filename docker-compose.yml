@@ -12,10 +12,10 @@ services:
       - API_IMAGE_URL=http://api-server:3001
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.<unique-name>.rule=Host(`your-domain.com`)"
-      - "traefik.http.routers.<unique-name>.entrypoints=websecure"
-      - "traefik.http.routers.<unique-name>.tls.certResolver=letsencrypt"
-      - "traefik.http.services.<unique-name>.loadbalancer.server.port=3000"
+      - "traefik.http.routers.quizznet.rule=Host(`quizznet.dokploy.com`)"
+      - "traefik.http.routers.quizznet.entrypoints=websecure"
+      - "traefik.http.routers.quizznet.tls.certResolver=letsencrypt"
+      - "traefik.http.services.quizznet.loadbalancer.server.port=3000"
     extra_hosts:
       - "host.docker.internal:host-gateway"
     networks:

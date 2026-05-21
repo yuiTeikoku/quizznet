@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "03SBvYRvPIw=",
+  "dgSpecHash": "WRa9o8TcStM=",
   "success": true,
-  "projectFilePath": "C:\\Yan\\Work\\quizznet-app\\Backend\\QuizzNetBackend\\QuizzNetBackend\\QuizzNetBackend.csproj",
+  "projectFilePath": "C:\\Yan\\Work\\quizznet\\Backend\\QuizzNetBackend\\QuizzNetBackend\\QuizzNetBackend.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\msdoo\\.nuget\\packages\\automapper\\16.1.1\\automapper.16.1.1.nupkg.sha512",
     "C:\\Users\\msdoo\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
