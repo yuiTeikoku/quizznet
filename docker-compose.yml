@@ -12,7 +12,7 @@ services:
       - API_IMAGE_URL=http://api-server:3001
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.quizznet.rule=Host(`quizznet.ddns.net`)"
+      - "traefik.http.routers.quizznet.rule=Host(`app-quizz.ddns.net`)"
       - "traefik.http.routers.quizznet.entrypoints=websecure"
       - "traefik.http.routers.quizznet.tls.certResolver=letsencrypt"
       - "traefik.http.services.quizznet.loadbalancer.server.port=4000"
@@ -59,13 +59,13 @@ services:
 
   pict-rs:
     image: asonix/pictrs:0.5
-    restart: unless-stopped
+    restart: always
     environment:
       - PICTRS__SERVER__ADDRESS=0.0.0.0:8080
       - PICTRS__MEDIA__VIDEO_ENABLED=false   # отключаем видео
       - PICTRS__MEDIA__ANIMATED_ENABLED=false
     volumes:
-      - ./pictrs-data:/mnt
+      - pictrs-data:/mnt:Z
     ports:
       - "8080:8080"  
     networks:
@@ -73,7 +73,7 @@ services:
   
   api-server:
     build: ./API-Images
-    restart: unless-stopped
+    restart: always
     ports:
       - "3001:3001"  
     environment:
