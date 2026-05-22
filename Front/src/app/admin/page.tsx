@@ -343,7 +343,10 @@ export default function AdminPage() {
     e.preventDefault();
     setLoading(true);
     try {
-      const res = await gameApi.addGame({ quizzId: addGameFormData.quizzId, leaderUserId: addGameFormData.leaderUserId, shuffleQuestion: addGameFormData.shuffleQuestion  });
+      const res = await gameApi.addGame({ 
+        quizzId: addGameFormData.quizzId, 
+        leaderUserId: addGameFormData.leaderUserId, 
+        shuffleQuestion: addGameFormData.shuffleQuestion  });
       if (res.success) {
         setShowAddGameForm(false);
         setAddGameFormData({ quizzId: -1, leaderUserId: -1, shuffleQuestion: false });
@@ -1351,7 +1354,7 @@ export default function AdminPage() {
                 <input
                   type="checkbox"
                   id="shuffle"
-                  checked={addGameFormData.shuffle}
+                  checked={addGameFormData.shuffleQuestion}
                   onChange={(e) => setAddGameFormData({ ...addGameFormData, shuffleQuestion: e.target.checked })}
                   className="w-5 h-5 text-pink-500 focus:ring-pink-500 border-gray-300 rounded"
                 />
