@@ -32,12 +32,6 @@ services:
       - ConnectionStrings__PostgresConnectionString=Host=postgres;Port=5432;Username=quizznet;Password=quizznet;Database=quizznet
     depends_on:
       - postgres
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.quizznet.rule=Host(`quizznet.ddns.net`)"
-      - "traefik.http.routers.quizznet.entrypoints=websecure"
-      - "traefik.http.routers.quizznet.tls.certResolver=letsencrypt"
-      - "traefik.http.services.quizznet.loadbalancer.server.port=8000"
     extra_hosts:
       - "host.docker.internal:host-gateway"
     networks:
