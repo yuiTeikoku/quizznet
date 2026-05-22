@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("QuizzNetBackend")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5e1265b794fb8c79936a6fbbd745b4d6b79aa641")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fd30a1e39e0a4ba233d46f63b4576b40b6371d81")]
 [assembly: System.Reflection.AssemblyProductAttribute("QuizzNetBackend")]
 [assembly: System.Reflection.AssemblyTitleAttribute("QuizzNetBackend")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

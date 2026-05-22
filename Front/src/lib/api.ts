@@ -170,7 +170,7 @@ export interface AuthApi {
 }
 
 export interface GameApi {
-  addGame: (data: { quizzId: number; leaderUserId: number }) => Promise<ResponseModel<GameModel>>;
+  addGame: (data: { quizzId: number; leaderUserId: number; shuffleQuestion: boolean }) => Promise<ResponseModel<GameModel>>;
   updateGame: (data: any) => Promise<ResponseModel<void>>;
   deleteGame: (id: number) => Promise<ResponseModel<void>>;
   startGame: (id: number) => Promise<ResponseModel<void>>;

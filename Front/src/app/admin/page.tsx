@@ -123,7 +123,7 @@ export default function AdminPage() {
   const [addGameFormData, setAddGameFormData] = useState({
     quizzId: -1,
     leaderUserId: -1,
-    shuffle: false
+    shuffleQuestion: true
   });
   const [showStartConfirmDialog, setShowStartConfirmDialog] = useState(false);
   const [gameToStart, setGameToStart] = useState<GameModel | null>(null);
@@ -343,10 +343,10 @@ export default function AdminPage() {
     e.preventDefault();
     setLoading(true);
     try {
-      const res = await gameApi.addGame({ quizzId: addGameFormData.quizzId, leaderUserId: addGameFormData.leaderUserId });
+      const res = await gameApi.addGame({ quizzId: addGameFormData.quizzId, leaderUserId: addGameFormData.leaderUserId, shuffleQuestion: addGameFormData.shuffleQuestion  });
       if (res.success) {
         setShowAddGameForm(false);
-        setAddGameFormData({ quizzId: -1, leaderUserId: -1, shuffle: false });
+        setAddGameFormData({ quizzId: -1, leaderUserId: -1, shuffleQuestion: false });
         loadData('games');
       } else {
         setError(res.messages?.join(', ') || 'Ошибка создания игры');
@@ -1352,7 +1352,7 @@ export default function AdminPage() {
                   type="checkbox"
                   id="shuffle"
                   checked={addGameFormData.shuffle}
-                  onChange={(e) => setAddGameFormData({ ...addGameFormData, shuffle: e.target.checked })}
+                  onChange={(e) => setAddGameFormData({ ...addGameFormData, shuffleQuestion: e.target.checked })}
                   className="w-5 h-5 text-pink-500 focus:ring-pink-500 border-gray-300 rounded"
                 />
                 <label htmlFor="shuffle" className="text-sm font-medium text-gray-700">Перемешать вопросы</label>
