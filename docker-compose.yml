@@ -12,10 +12,10 @@ services:
       - API_IMAGE_URL=http://api-server:3001
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.app-quizz.rule=Host(`app-quizz.ddns.net`)"
-      - "traefik.http.routers.app-quizz.entrypoints=websecure"
-      - "traefik.http.routers.app-quizz.tls.certResolver=letsencrypt"
-      - "traefik.http.services.app-quizz.loadbalancer.server.port=4000"
+      - "traefik.http.routers.quizznet.rule=Host(`quizznet.ddns.net`)"
+      - "traefik.http.routers.quizznet.entrypoints=websecure"
+      - "traefik.http.routers.quizznet.tls.certResolver=letsencrypt"
+      - "traefik.http.services.quizznet.loadbalancer.server.port=4000"
     extra_hosts:
       - "host.docker.internal:host-gateway"
     networks:
@@ -32,6 +32,12 @@ services:
       - ConnectionStrings__PostgresConnectionString=Host=postgres;Port=5432;Username=quizznet;Password=quizznet;Database=quizznet
     depends_on:
       - postgres
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.quizznet.rule=Host(`quizznet.ddns.net`)"
+      - "traefik.http.routers.quizznet.entrypoints=websecure"
+      - "traefik.http.routers.quizznet.tls.certResolver=letsencrypt"
+      - "traefik.http.services.quizznet.loadbalancer.server.port=8000"
     extra_hosts:
       - "host.docker.internal:host-gateway"
     networks:
