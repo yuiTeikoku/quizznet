@@ -4,7 +4,7 @@ services:
       context: ./Front
       dockerfile: Dockerfile
     ports: 
-      - "3000:3000"
+      - "4000:3000"
     depends_on:
       - backend
     environment: 
@@ -15,7 +15,7 @@ services:
       - "traefik.http.routers.quizznet.rule=Host(`quizznet.dokploy.com`)"
       - "traefik.http.routers.quizznet.entrypoints=websecure"
       - "traefik.http.routers.quizznet.tls.certResolver=letsencrypt"
-      - "traefik.http.services.quizznet.loadbalancer.server.port=3000"
+      - "traefik.http.services.quizznet.loadbalancer.server.port=4000"
     extra_hosts:
       - "host.docker.internal:host-gateway"
     networks:
