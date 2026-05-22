@@ -230,7 +230,7 @@ export default function GameLinkPage() {
                 <div className="mb-6 flex justify-center">
                   <div className={`inline-flex items-center gap-3 px-6 py-4 rounded-2xl shadow-lg ${timer <= 10
                     ? 'bg-gradient-to-r from-red-500 to-red-600 text-white animate-pulse'
-                    : timer <= 30
+                    : timer <= 20
                       ? 'bg-gradient-to-r from-yellow-500 to-orange-500 text-white'
                       : 'bg-gradient-to-r from-blue-500 to-purple-600 text-white'
                     }`}>

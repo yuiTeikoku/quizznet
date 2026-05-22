@@ -55,9 +55,10 @@ namespace QuizzNetBackend.Services.Scoped
            
         }
 
+        private int _totalSecondFromRound = 30;
         private async Task ShowTimer(string channelId)
         {
-            var timer = 60;
+            var timer = _totalSecondFromRound;
             var start = DateTime.Now;
             while (timer > 0)
             {
@@ -65,7 +66,7 @@ namespace QuizzNetBackend.Services.Scoped
 
                 await _hubContext.Clients.Group(channelId).SendAsync("game-timer", timer);
                 await Task.Delay(200);
-                timer = 60 - (int) dist.TotalSeconds;
+                timer = _totalSecondFromRound - (int) dist.TotalSeconds;
             }
         }
     }
